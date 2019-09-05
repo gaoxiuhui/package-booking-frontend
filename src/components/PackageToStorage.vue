@@ -12,7 +12,7 @@
     >
       <a-input
         v-decorator="[
-          '运单号',
+          'waybillNum',
           {rules: [{ required: true, message: '运单号不能为空' }]}
         ]"
          placeholder="请填写你的运单号"
@@ -26,7 +26,7 @@
     >
       <a-input
         v-decorator="[
-          '收件人',
+          'recipients',
           {rules: [{ required: true, message: '收件人的姓名不能为空' }]}
         ]"
         placeholder="请填写收件人的姓名"
@@ -40,7 +40,7 @@
     >
       <a-input
         v-decorator="[
-          '电话',
+          'phoneNum',
           {rules: [{ required: true, message: '联系人电话不能为空' }]}
         ]"
         placeholder="请填写电话"
@@ -54,7 +54,7 @@
     >
       <a-input
         v-decorator="[
-          '重量',
+          'weight',
           {rules: [{ required: true, message: '包裹重量不能为空' }]}
         ]"
         placeholder="请填写包裹重量"
@@ -89,6 +89,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values);
+           this.$store.dispatch("postPackages",values);
         }
       });
     },
